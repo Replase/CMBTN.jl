@@ -1,6 +1,6 @@
 
 
-using InfoZIP,DataFrames,HTTP,CSVFiles,ZipFile
+using InfoZIP,DataFrames,HTTP,CSVFiles,ZipFile,ExcelFiles,XLSX
 
 function decompress(zipp::String,dir::String)  #Descomprime un .zip dando su direccion y donde cae
     InfoZIP.unzip(zipp,dir)
@@ -18,3 +18,11 @@ function DFCSV(csvv::String,g::Bool)::DataFrame
     end
     return f
 end
+
+#function DFXLX(xlx::String,sheet::Int64)::DataFrame
+#    w=XLSX.readxlsx(xlx)
+#    list=XLSX.sheetnames(w)                               intente abrir xlsx pero no pude
+#    XLSX.close(w)
+#    f=DataFrame(XLSX.readtable(xlx,list[sheet]))
+#    return f
+#end

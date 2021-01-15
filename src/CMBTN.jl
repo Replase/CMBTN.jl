@@ -1,5 +1,4 @@
 module CMBTN
 
-greet() = print("Hello World!")
-
+include("help.jl")
 end # module
