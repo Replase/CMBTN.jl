@@ -1,0 +1,91 @@
+Creación de las funciones para obtener las variables(campos)
+Variables (campos) a agregar sobre cada municipio:
+1.    Valor del Índice de Desarrollo Humano (IDH) y sus componentes desagregadas
+2.    Índice de Intensidad Migratoria
+3.    Indicadores de pobreza de CONEVAL
+4.    Mediana y primer y tercer cuartil de la edad
+5.    Tasas de natalidad, fecundidad y mortalidad hasta el año 2019 (o poco antes) V
+6.    % de hombres y mujeres V
+7.    % de población indígena V
+8.    Población total, extensión territorial y densidad de población. V
+9 Códigos postales, coordenadas geográficas y altitud media.
+
+TOKEN INEGI
+5ca25658-cc51-c4fd-62cd-75148bd43e3a
+
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000026,1002000013,1002000030,6207019034/es/0700/true/BISE/2.0/5ca25658-cc51-c4fd-62cd-75148bd43e3a?type=json
+INDICADORES
+poblacion total 1002000001
+edad mediana  1002000010
+densidad de poblacion 3105001001
+porcentaje de hombres 6207020032
+porcentaje de mujeres 6207020033
+Promedio de hijos nacidos vivos de las mujeres de 12 años y más 1002000013
+nacimientos  1002000026
+defunciones generales 1002000030
+porcentaje de población de 3 años y más hablante de lengua indígena 6207019034
+
+Aguascalientes
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000001/true/BISE/2.0/[Aquí va tu Token]?type=json
+Baja California
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000002/true/BISE/2.0/[Aquí va tu Token]?type=json
+Baja Clifornia sur
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000003/true/BISE/2.0/[Aquí va tu Token]?type=json
+Campeche
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000004/true/BISE/2.0/[Aquí va tu Token]?type=json
+Chaipas
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000007/true/BISE/2.0/[Aquí va tu Token]?type=json
+Chihuaua
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000008/true/BISE/2.0/[Aquí va tu Token]?type=json
+Ciudad de mexico
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000009/true/BISE/2.0/[Aquí va tu Token]?type=json
+Coahuila de zaragoza
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000005/true/BISE/2.0/[Aquí va tu Token]?type=json
+Colima
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000006/true/BISE/2.0/[Aquí va tu Token]?type=json
+Durango
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000010/true/BISE/2.0/[Aquí va tu Token]?type=json
+Guanajuato
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000011/true/BISE/2.0/[Aquí va tu Token]?type=json
+Guerrero
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000012/true/BISE/2.0/[Aquí va tu Token]?type=json
+Hidalgo
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000013/true/BISE/2.0/[Aquí va tu Token]?type=json
+Jalisto
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000014/true/BISE/2.0/[Aquí va tu Token]?type=json
+Michoacan
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000016/true/BISE/2.0/[Aquí va tu Token]?type=json
+Morelos
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000017/true/BISE/2.0/[Aquí va tu Token]?type=json
+Mexico
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000015/true/BISE/2.0/[Aquí va tu Token]?type=json
+Nayarit
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000018/true/BISE/2.0/[Aquí va tu Token]?type=json
+Nuevo Leon
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000019/true/BISE/2.0/[Aquí va tu Token]?type=json
+Oaxaca
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000020/true/BISE/2.0/[Aquí va tu Token]?type=json
+Puebla
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000021/true/BISE/2.0/[Aquí va tu Token]?type=json
+Queretaro
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000022/true/BISE/2.0/[Aquí va tu Token]?type=json
+Quintana Roo
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000023/true/BISE/2.0/[Aquí va tu Token]?type=json
+San Luis Potosi
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000024/true/BISE/2.0/[Aquí va tu Token]?type=json
+Sinaloa
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000025/true/BISE/2.0/[Aquí va tu Token]?type=json
+Sonora
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000026/true/BISE/2.0/[Aquí va tu Token]?type=json
+Tabasco
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000027/true/BISE/2.0/[Aquí va tu Token]?type=json
+Tamaulipas
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000028/true/BISE/2.0/[Aquí va tu Token]?type=json
+Tlaxcala
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000029/true/BISE/2.0/[Aquí va tu Token]?type=json
+Veracruz de ignacio de la llaves
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000030/true/BISE/2.0/[Aquí va tu Token]?type=json
+Yucatan
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000031/true/BISE/2.0/[Aquí va tu Token]?type=json
+Zacatecas
+https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000001,1002000010,3105001001,6207020032,6207020033,1002000013,1002000026,1002000030,6207019034/es/07000032/true/BISE/2.0/[Aquí va tu Token]?type=json
