@@ -1,6 +1,6 @@
 
 
-using InfoZIP,DataFrames,HTTP,CSVFiles,ZipFile,ExcelFiles,XLSX
+using InfoZIP,DataFrames,HTTP,CSVFiles,ExcelFiles,XLSX,JSON
 
 function decompress(zipp::String,dir::String)  #Descomprime un .zip dando su direccion y donde cae
     InfoZIP.unzip(zipp,dir)
@@ -43,4 +43,11 @@ function downl(url::String)::String
         return pwd()
     end
     return a
+end
+function downA(API::String)::Dict
+    a=HTTP.request("GET",API)
+    f=String(a.body)
+    Dic=Dict()
+    Dic=JSON.parse(f)
+    return Dic
 end
