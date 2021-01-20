@@ -3,6 +3,7 @@ module CMBTN
 include("help.jl")
 include("data.jl")
 include("info.jl")
+include("Natalidad.jl")
 
 function General()
     V=apis
@@ -29,9 +30,12 @@ function General()
     naci=value[97:128]
     defun=value[129:160]
     dens=value[161:192]
-    homb=value[193:224]
-    muje=value[225:256]
-    indi=value[257:288]
+    homb=value[225:256]
+    muje=value[257:288]
+    indi=value[193:224]
+    #homb=value[193:224]
+    #muje=value[225:256]
+    #indi=value[257:288]
     data=DataFrame(id=d,Estado=Estados,Poblacion_total=pob,Media_edad=edad,Fecundidad=fecun,Nacimientos=naci,Defunciones=defun,Densidad_pob=dens,Hombres=homb,Mujeres=muje,indigena=indi)
     filecsv(data)
 end
