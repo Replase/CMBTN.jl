@@ -32,14 +32,11 @@ Nacimientos = [HTTP.get("https://www.inegi.org.mx/app/api/indicadores/desarrolla
             HTTP.get("https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000026,1002000027,1002000028/es/07000030/false/BISE/2.0/5568de47-3c5d-eb22-1c3c-9d4294ee5b77?type=json"),
             HTTP.get("https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000026,1002000027,1002000028/es/07000031/false/BISE/2.0/5568de47-3c5d-eb22-1c3c-9d4294ee5b77?type=json"),
             HTTP.get("https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000026,1002000027,1002000028/es/07000032/false/BISE/2.0/5568de47-3c5d-eb22-1c3c-9d4294ee5b77?type=json")]
-#= Nacional, hombres y mujeres
-1- Estados Unidos Mexicanos
-2- Aguascalientes Total estatal
-3- Baja california Tot est
-4- Baja california sur tot est
-=#
 
-#dato = Natalidad(true, "2018") arroja el numero total de nacimientos en todo el territorio mexicano en ese año
+#Ejemplos:
+#dato = Natalidad(true, "2018") #arroja el numero total de nacimientos en todo el territorio mexicano en ese año
+#dato2 = Natalidad("tamaulipas", "2019", "total") #regresa el numero de nacimientos en el estado seleccionado, año y si es población total, hombre o mujer
+
 
 function Natalidad(tot::Bool, anio::String)::Int
     a = Nacimientos[1]
@@ -59,18 +56,84 @@ function Natalidad(tot::Bool, anio::String)::Int
         println("Año no encontrado")
         return 0
     end
-        println("Ingrese un año correcto")
+        println("No se tiene registro de natalidad en éste año")
         return 0
 end
+
+function Natalidad(estado::String, año::String, genero::String)::Int
+    indice_estado = buscar_estado(lowercase(estado))
+    if lowercase(genero) == "hombre"
+        gen = 2
+    elseif lowercase(genero) == "mujer"
+        gen = 3
+    elseif lowercase(genero) == "total"
+        gen = 1
+    else
+        println("entrada de género incorrecto")
+        gen = 0
+    end
+    if estado == 0
+        printf("Estado no encontrado")
+        return 0
+    else
+        a = convertir_a_json(Nacimientos[indice_estado+1])
+        b = a.vals[14][gen]["OBSERVATIONS"]
+        indice, i = 0, 1
+        while i <= length(b)
+            if b[i]["TIME_PERIOD"] == año
+                indice = i
+            end
+            i = i+1
+        end
+        dato = convert_string_to_int(b[indice]["OBS_VALUE"])
+    end
+end
+
+#--------------------------Funcioes ayuda---------------------------------------------
 
 function convert_string_to_int(dato::String)::Int
     y = parse(Float64, dato)
     y = isinteger(y) ? Int(y) : y
 end
 
-function convertir_a_json(a::HTTP.Messages.Response)::Dict{String,Any}
+function convertir_a_json(a::HTTP.Messages.Response)::Dict{String,Any} #converte una consulta HTTP a json
     st = String(a.body)
     obj = JSON.Parser.parse(st)
     a.body = Vector{UInt8}(st)
     return obj
+end
+
+function buscar_estado(estado::String)::Int #busca el nombre del estado y regresa su índice
+    if estado == "aguascalientes"   return 2 end
+    if estado == "baja california"  return 3 end
+    if estado == "baja california sur"  return 4 end
+    if estado == "campeche" return 5 end
+    if estado == "chiapas"  return 6 end
+    if estado == "ciudad de mexico" return 7 end
+    if estado == "coahuila" return 8 end
+    if estado == "colima"   return 9 end
+    if estado == "durango"  return 10 end
+    if estado == "guanajuato"   return 11 end
+    if estado == "guerrero" return 12 end
+    if estado == "hidalgo"  return 13 end
+    if estado == "jalisto"  return 14 end
+    if estado == "michoacan" return 15 end
+    if estado == "morelos"  return 16 end
+    if estado == "estado de mexico" return 17 end
+    if estado == "nayarit" return 18 end
+    if estado == "nuevo Leon" return 19 end
+    if estado == "oaxaca" return 20 end
+    if estado == "puebla" return 21 end
+    if estado == "queretaro"    return 22 end
+    if estado == "quintana Roo" return 23 end
+    if estado == "san Luis Potosi"  return 24 end
+    if estado == "sinaloa"  return 25 end
+    if estado == "sonora" return 26 end
+    if estado == "tabasco" return 27 end
+    if estado == "tamaulipas" return 28 end
+    if estado == "tlaxcala" return 29 end
+    if estado == "veracruz" return 30 end
+    if estado == "yucatan" return 31 end
+    if estado == "zacatecas" return 32 end
+    return 0
 end
