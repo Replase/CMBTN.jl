@@ -3,4 +3,4 @@
 ### "CMBTN" Un Pkg para Julia creado por estudiantes de Matemáticas Aplicadas y Computación
   El producto requerido es un conjunto de datos que agregue a los datos abiertos de COVID-19 de la Secretaría de Salud, campos adicionales con información del municipio de residencia de cada registro.
   
- **PARA MAYOR INFORMACIÓN CONSULTAR EL [WIKI](https://github.com/Replase/CMBTN.jl/wiki)**
+    __*PARA MAYOR INFORMACIÓN CONSULTAR EL [WIKI](https://github.com/Replase/CMBTN.jl/wiki)*__
