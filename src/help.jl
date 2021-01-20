@@ -18,7 +18,7 @@ function DFCSV(csvv::String,g::Bool)::DataFrame
     end
     return f
 end
-function filecsv(file::DataFrame)::String
+function filecsv(file::DataFrame)
     a=save("file.csv",file)                  #crea un arhchivo csv en el directorio base
 end
 function downl(url::String,dir::String)::String
