@@ -9,7 +9,6 @@ function decompress(zipp::String)::String #descomprime un .zip y lo guarda el la
     a=InfoZIP.unzip(zipp,pwd())
     return a
 end
-
 #this is a comment I added
 function DFCSV(csvv::String,g::Bool)::DataFrame
     if g
@@ -19,14 +18,16 @@ function DFCSV(csvv::String,g::Bool)::DataFrame
     end
     return f
 end
-function filecsv(file::DataFrame)
-    save("file.csv",file)                   #crea un arhchivo csv en el directorio base
+function filecsv(file::DataFrame)::String
+    a=save("file.csv",file)
+    return a                   #crea un arhchivo csv en el directorio base
 end
 function downl(url::String,dir::String)::String
         a=HTTP.download(url,dir)                            #Descarga un archivo y si es un zip lo descomprime
-        b=sizeof(a)
-        c=b-2
-        tipo=a[c]*a[c+1]*a[c+2]
+        #b=sizeof(a)
+        #c=b-2
+        #tipo=a[c]*a[c+1]*a[c+2]
+        tipo=a[end-2:end]
         if tipo == "zip"
             decompress(a,dir)
             return ""
@@ -35,9 +36,10 @@ function downl(url::String,dir::String)::String
 end
 function downl(url::String)::String
     a=HTTP.download(url,pwd())
-    b=sizeof(a)
-    c=b-2
-    tipo=a[c]*a[c+1]*a[c+2]
+    #b=sizeof(a)
+    #c=b-2
+    #tipo=a[c]*a[c+1]*a[c+2]
+    tipo=a[end-2:end]
     if tipo == "zip"
         decompress(a,pwd())
         return pwd()
