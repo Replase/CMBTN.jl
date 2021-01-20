@@ -19,8 +19,7 @@ function DFCSV(csvv::String,g::Bool)::DataFrame
     return f
 end
 function filecsv(file::DataFrame)::String
-    a=save("file.csv",file)
-    return a                   #crea un arhchivo csv en el directorio base
+    a=save("file.csv",file)                  #crea un arhchivo csv en el directorio base
 end
 function downl(url::String,dir::String)::String
         a=HTTP.download(url,dir)                            #Descarga un archivo y si es un zip lo descomprime

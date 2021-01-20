@@ -4,7 +4,7 @@ include("help.jl")
 include("data.jl")
 include("info.jl")
 
-function General()::String
+function General()
     V=apis
     d=Vector()
     info=Vector()
@@ -33,7 +33,6 @@ function General()::String
     muje=value[225:256]
     indi=value[257:288]
     data=DataFrame(id=d,Estado=Estados,Poblacion_total=pob,Media_edad=edad,Fecundidad=fecun,Nacimientos=naci,Defunciones=defun,Densidad_pob=dens,Hombres=homb,Mujeres=muje,indigena=indi)
-    a=filecsv(data)
-    return a
+    filecsv(data)
 end
 end # module
