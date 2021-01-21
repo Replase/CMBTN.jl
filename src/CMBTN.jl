@@ -3,7 +3,6 @@ module CMBTN
 include("help.jl")
 include("data.jl")
 include("info.jl")
-include("Natalidad.jl")
 include("extracDatosNatyMor.jl")
 
 function General()
