@@ -5,9 +5,8 @@ using InfoZIP,DataFrames,HTTP,CSVFiles,ExcelFiles,XLSX,JSON
 function decompress(zipp::String,dir::String)  #Descomprime un .zip dando su direccion y donde cae
     InfoZIP.unzip(zipp,dir)
 end
-function decompress(zipp::String)::String #descomprime un .zip y lo guarda el la direccion actual
-    a=InfoZIP.unzip(zipp,pwd())
-    return a
+function decompress(zipp::String) #descomprime un .zip y lo guarda el la direccion actual
+    InfoZIP.unzip(zipp,pwd())
 end
 #this is a comment I added
 function DFCSV(csvv::String,g::Bool)::DataFrame
