@@ -9,7 +9,7 @@ e = Cantidad_total_de("mortalidad", "veracruz", "2019", "mujer")
 =#
 
 function Cantidad_total_de(categoria::String,anio::String)::Int
-    if lowercase(categoria) == "natalida"
+    if lowercase(categoria) == "natalidad"
         a = Nacimientos[1]
     elseif lowercase(categoria) == "mortalidad"
         a = Muertes[1]
