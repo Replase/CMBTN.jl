@@ -40,6 +40,8 @@ function Cantidad_total_de(categoria::String, estado::String, año::String, gene
         gen = 2
     elseif lowercase(genero) == "mujer"
         gen = 3
+    elseif lowercase(genero) == "total"
+        gen = 1
     else
         println("entrada de género incorrecto")
         gen = 0
