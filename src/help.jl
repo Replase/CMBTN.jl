@@ -1,6 +1,6 @@
 
 
-using InfoZIP,DataFrames,HTTP,CSVFiles,ExcelFiles,XLSX,JSON
+using InfoZIP,DataFrames,HTTP,CSVFiles,JSON,Dates
 
 function decompress(zipp::String,dir::String)  #Descomprime un .zip dando su direccion y donde cae
     InfoZIP.unzip(zipp,dir)
@@ -18,13 +18,16 @@ function DFCSV(csvv::String,g::Bool)::DataFrame
     return f
 end
 function filecsv(file::DataFrame)
-    a=save("file.csv",file)                  #crea un arhchivo csv en el directorio base
+    date=string(Dates.now())
+    date=date[1:19]
+    date=replace(date, ['-',':'] => "")
+    n="file"
+    fin=".csv"
+    name=n*date*fin
+    a=save(name,file)                  #crea un arhchivo csv en el directorio base
 end
 function downl(url::String,dir::String)::String
         a=HTTP.download(url,dir)                            #Descarga un archivo y si es un zip lo descomprime
-        #b=sizeof(a)
-        #c=b-2
-        #tipo=a[c]*a[c+1]*a[c+2]
         tipo=a[end-2:end]
         if tipo == "zip"
             decompress(a,dir)
@@ -34,9 +37,6 @@ function downl(url::String,dir::String)::String
 end
 function downl(url::String)::String
     a=HTTP.download(url,pwd())
-    #b=sizeof(a)
-    #c=b-2
-    #tipo=a[c]*a[c+1]*a[c+2]
     tipo=a[end-2:end]
     if tipo == "zip"
         decompress(a,pwd())
