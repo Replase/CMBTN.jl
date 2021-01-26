@@ -5,7 +5,7 @@ include("data.jl")
 include("info.jl")
 include("extracDatosNatyMor.jl")
 
-function General()
+function Estado_data()
     V=apis
     d=Vector()
     info=Vector()
@@ -35,5 +35,14 @@ function General()
     indi=value[193:224]
     data=DataFrame(id=d,Estado=Estados,Poblacion_total=pob,Media_edad=edad,Fecundidad=fecun,Nacimientos=naci,Defunciones=defun,Densidad_pob=dens,Hombres=homb,Mujeres=muje,indigena=indi)
     filecsv(data)
+end
+function Municipio_Estado()
+    path=pathof(CMBTN)
+    path=path[1,end-8]*"municipios.txt"
+    f=open("")
+    if f
+        println("se abrio")
+    end
+    close(f)
 end
 end # module
