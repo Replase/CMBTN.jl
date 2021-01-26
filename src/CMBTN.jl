@@ -38,11 +38,10 @@ function Estado_data()
 end
 function Municipio_Estado()
     path=pathof(CMBTN)
-    path=path[1,end-8]*"municipios.txt"
-    f=open("")
-    if f
-        println("se abrio")
-    end
+    m="municipio.txt"
+    p=path[1:end-8]
+    path=p*m
+    f=open(path)
     close(f)
 end
 end # module
