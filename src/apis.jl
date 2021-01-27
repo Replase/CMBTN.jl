@@ -66,3 +66,10 @@ Muertes = [HTTP.get("https://www.inegi.org.mx/app/api/indicadores/desarrolladore
            HTTP.get("https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000030,1002000031,1002000032/es/07000030/false/BISE/2.0/5568de47-3c5d-eb22-1c3c-9d4294ee5b77?type=json"),
            HTTP.get("https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000030,1002000031,1002000032/es/07000031/false/BISE/2.0/5568de47-3c5d-eb22-1c3c-9d4294ee5b77?type=json"),
            HTTP.get("https://www.inegi.org.mx/app/api/indicadores/desarrolladores/jsonxml/INDICATOR/1002000030,1002000031,1002000032/es/07000032/false/BISE/2.0/5568de47-3c5d-eb22-1c3c-9d4294ee5b77?type=json"),]
+
+nom_estados = ["total", "aguascalientes", "baja california", "baja california sur", "campeche",
+             "chiapas", "ciudad de mexico", "coahuila", "colima", "durango", "guanajuato",
+             "guerrero", "guerrero", "hidalgo", "jalisco", "michoacan", "morelos",
+             "estado de mexico", "nayarit", "nuevo leon", "oaxaca", "puebla", "queretaro",
+             "quintana roo", "san luis potosi", "sinaloa", "sonora", "tabasco", "tamaulipas",
+             "tlaxcala", "veracruz", "yucatan", "zacatecas"]
