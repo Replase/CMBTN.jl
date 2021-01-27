@@ -1,12 +1,53 @@
 include("apis.jl")
 
 #=Ejemplos de uso
-a = Cantidad_total_de("natalidad", "2019")
+a = Cantidad_total_de("natalidad", "2016")
 b = Cantidad_total_de("mortalidad", "2019")
 c = Cantidad_total_de("natalidad", "campeche", "2019", "total")
 d = Cantidad_total_de("natalidad", "campeche", "2019", "hombre")
 e = Cantidad_total_de("mortalidad", "veracruz", "2019", "mujer")
+f = vector_x_anio_de_nacimientos()
+g = vector_x_anio_de_muertes()
+df = df_nacimientos_x_anio()
+dfm = df_muertes_x_anio()
 =#
+
+#for it_naci in 1:length(Nacimientos)
+function vector_x_anio_de_nacimientos()::Vector{Int}
+    a = Nacimientos[1]
+    b = convertir_a_json(a)
+    datos = Array{Int}(undef,length(b["Series"][1]["OBSERVATIONS"]))
+    for anio in 1:length(b["Series"][1]["OBSERVATIONS"])
+        datos[anio] = convert_string_to_int(b["Series"][1]["OBSERVATIONS"][anio]["OBS_VALUE"])
+    end
+    return datos
+end
+
+function vector_x_anio_de_muertes()::Vector{Int}
+    a = Muertes[1]
+    b = convertir_a_json(a)
+    datos = Array{Int}(undef,26)
+    for anio in 1:length(b["Series"][1]["OBSERVATIONS"])
+        datos[anio] = convert_string_to_int(b["Series"][1]["OBSERVATIONS"][anio]["OBS_VALUE"])
+    end
+    return datos
+end
+
+function df_nacimientos_x_anio()::DataFrame
+    total = vector_x_anio_de_nacimientos(1)
+    hombre = vector_x_anio_de_nacimientos(2)
+    mujer = vector_x_anio_de_nacimientos(3)
+    anio = vector_anio()
+    a = DataFrame(Año = anio, Total = total, Humbre = hombre, Mujer = mujer)
+end
+
+function df_muertes_x_anio()::DataFrame
+    total = vector_x_anio_de_muertes(1)
+    hombre = vector_x_anio_de_muertes(2)
+    mujer = vector_x_anio_de_muertes(3)
+    anio = vector_anio()
+    a = DataFrame(Año = anio, Total = total, Humbre = hombre, Mujer = mujer)
+end
 
 function Cantidad_total_de(categoria::String,anio::String)::Int
     if lowercase(categoria) == "natalidad"
@@ -70,7 +111,6 @@ function Cantidad_total_de(categoria::String, estado::String, año::String, gene
 end
 
 #--------------------------Funcioes ayuda---------------------------------------------
-
 function convert_string_to_int(dato::String)::Int
     y = parse(Float64, dato)
     y = isinteger(y) ? Int(y) : y
@@ -83,37 +123,40 @@ function convertir_a_json(a::HTTP.Messages.Response)::Dict{String,Any} #converte
     return obj
 end
 
-function buscar_estado(estado::String)::Int #busca el nombre del estado y regresa su índice
-    if estado == "aguascalientes"   return 2 end
-    if estado == "baja california"  return 3 end
-    if estado == "baja california sur"  return 4 end
-    if estado == "campeche" return 5 end
-    if estado == "chiapas"  return 6 end
-    if estado == "ciudad de mexico" return 7 end
-    if estado == "coahuila" return 8 end
-    if estado == "colima"   return 9 end
-    if estado == "durango"  return 10 end
-    if estado == "guanajuato"   return 11 end
-    if estado == "guerrero" return 12 end
-    if estado == "hidalgo"  return 13 end
-    if estado == "jalisto"  return 14 end
-    if estado == "michoacan" return 15 end
-    if estado == "morelos"  return 16 end
-    if estado == "estado de mexico" return 17 end
-    if estado == "nayarit" return 18 end
-    if estado == "nuevo Leon" return 19 end
-    if estado == "oaxaca" return 20 end
-    if estado == "puebla" return 21 end
-    if estado == "queretaro"    return 22 end
-    if estado == "quintana Roo" return 23 end
-    if estado == "san Luis Potosi"  return 24 end
-    if estado == "sinaloa"  return 25 end
-    if estado == "sonora" return 26 end
-    if estado == "tabasco" return 27 end
-    if estado == "tamaulipas" return 28 end
-    if estado == "tlaxcala" return 29 end
-    if estado == "veracruz" return 30 end
-    if estado == "yucatan" return 31 end
-    if estado == "zacatecas" return 32 end
-    return 0
+function vector_x_anio_de_nacimientos(tp::Int)::Vector{Int}
+    a = Nacimientos[1]
+    b = convertir_a_json(a)
+    datos = Array{Int}(undef,26)
+    for anio in 1:length(b["Series"][tp]["OBSERVATIONS"])
+        datos[anio] = convert_string_to_int(b["Series"][tp]["OBSERVATIONS"][anio]["OBS_VALUE"])
+    end
+    return datos
+end
+
+function vector_x_anio_de_muertes(tp::Int)::Vector{Int}
+    a = Muertes[1]
+    b = convertir_a_json(a)
+    datos = Array{Int}(undef,26)
+    for anio in 1:length(b["Series"][tp]["OBSERVATIONS"])
+        datos[anio] = convert_string_to_int(b["Series"][tp]["OBSERVATIONS"][anio]["OBS_VALUE"])
+    end
+    return datos
+end
+
+function buscar_estado(estado::String)::Int #busc a el nombre del estado y regresa su índice
+    for i in 2:length(nom_estados)
+        if nom_estados[i] == estado
+            return i
+        end
+    end
+end
+
+function vector_anio()::Array{String}
+    a = Nacimientos[1]
+    b = convertir_a_json(a)
+    an = Array{String}(undef, length(b.vals[14][1]["OBSERVATIONS"]))
+    for i in 1:length(b.vals[14][1]["OBSERVATIONS"])
+         an[i]= b.vals[14][1]["OBSERVATIONS"][i]["TIME_PERIOD"]
+    end
+    return an
 end
