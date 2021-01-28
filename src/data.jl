@@ -7,8 +7,8 @@ function inegi(dic::Dict)::Vector
       for x in a
             obs=get(x,"OBSERVATIONS",3)
             data=get(obs[1],"OBS_VALUE",3)
-            ind=get(x,"INDICADOR",3)
-            dic2=Dict("INDICADOR"=>ind,"OBS_VALUE"=>data)
+            #ind=get(x,"INDICADOR",3)
+            dic2=Dict("OBS_VALUE"=>data)#dic2=Dict("INDICADOR"=>ind,"OBS_VALUE"=>data)
             push!(vector,dic2)
       end
       deleteat!(vector,1)
@@ -19,6 +19,18 @@ function estadoid(url::String)::Int64
       f=parse(Int64,a)
       f=f-7000000
       return f
+end
+function municid(url::String)::Vector
+      a=url[182:189]
+      b=url[182:193]
+      g=parse(Int64,a)
+      g=g-7000000
+      f=b[end-3:end]
+      f=parse(Int64,f)
+      vec=Vector()
+      push!(vec,g)
+      push!(vec,f)
+      return vec
 end
 function dataind(vect::Vector,g::Bool)::Vector
       vec=Vector(undef,1)
