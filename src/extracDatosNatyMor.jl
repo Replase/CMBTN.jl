@@ -1,6 +1,6 @@
 #include("apis.jl")
 using HTTP, JSON
-=Ejemplos de uso
+#=Ejemplos de uso
 a = Cantidad_total_de("natalidad", "2019")
 b = Cantidad_total_de("mortalidad", "2019")
 c = Cantidad_total_de("natalidad", "campeche", "2019", "total")
@@ -12,7 +12,6 @@ df = df_nacimientos_x_anio()
 dfm = df_muertes_x_anio()
 =#
 
-#for it_naci in 1:length(Nacimientos)
 function vector_x_anio_de_nacimientos()::Vector{Int}
     try
         a = Nacimientos[1]
