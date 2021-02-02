@@ -1,6 +1,6 @@
 
 
-using InfoZIP,DataFrames,HTTP,CSVFiles,JSON,Dates
+using DataFrames,HTTP,CSVFiles,JSON,Dates,InfoZIP
 
 function decompress(zipp::String,dir::String)  #Descomprime un .zip dando su direccion y donde cae
     InfoZIP.unzip(zipp,dir)
@@ -51,17 +51,10 @@ function downA(API::String)::Vector         # retorna una vector con la informac
         Dic=Dict()
         Dic=JSON.parse(f)
         Dic=get(Dic,"Series",3)
-        sleep(.5)
         return Dic
     catch err
-        token2="cd76d2fa-6cce-ba81-9f41-723a08410c38?type=json"
-        API=API[1:end-46]*token2 #46
-        a=HTTP.request("GET",API)
-        f=String(a.body)
-        Dic=Dict()
-        Dic=JSON.parse(f)
-        Dic=get(Dic,"Series",3)
-        sleep(.5)
+        println("Error 3312 -> El servidor de datos de la INEGI a bloqueado la IP de su computadora, favor de esperar 5 min y volverlo a intenar")
+        Dic=Vector()
         return Dic
     end
 end

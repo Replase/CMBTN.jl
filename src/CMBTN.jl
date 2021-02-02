@@ -44,14 +44,23 @@ function Municipio_Estado(path::String)                                        #
         push!(ide,ids[1])
         push!(idm,ids[2])
         println("$i")
+        if i==500
+            sleep(120)
+        end
+        if i==1000
+            sleep(120)
+        end
+        if i==1500
+            sleep(120)
+        end
+        if i==2000
+            sleep(120)
+        end
     end
-    ide2=ide[31:end]
-    info2=info[31:end]
-    idm2=idm[31:end]
     nine=Vector(undef,9)
     for n in 1:9
         data=Vector(undef,1)
-        for x in info2
+        for x in info
             try
                 push!(data,x[n])
             catch err
@@ -60,7 +69,7 @@ function Municipio_Estado(path::String)                                        #
         end
         nine[n]=deleteat!(data,1)
     end
-    data=DataFrame(id_Estado=ide2,id_municipio=idm2,Poblacion_total=nine[1],Media_edad=nine[2],Fecundidad=nine[3],Nacimientos=nine[4],Defunciones=nine[5],Densidad_pob=nine[6],Hombres=nine[8],Mujeres=nine[9],indigena=nine[7])
+    data=DataFrame(id_Estado=ide,id_municipio=idm,Poblacion_total=nine[1],Media_edad=nine[2],Fecundidad=nine[3],Nacimientos=nine[4],Defunciones=nine[5],Densidad_pob=nine[6],Hombres=nine[8],Mujeres=nine[9],indigena=nine[7])
     filecsv(data)
 end
 end # module
