@@ -12,7 +12,7 @@ function Estado_data()
     for x in V
         k=estadoid(x)
         v=downA(x)
-        awa=inegii(v)
+        awa=inegi(v)
         push!(info,awa)
         push!(ids,k)
     end
@@ -39,7 +39,7 @@ function Municipio_Estado(path::String)                                        #
     for (i,x) in enumerate(s)
         ids=municid(x)
         Dic=downA(x)
-        awa=inegii(Dic)
+        awa=inegi(Dic)
         push!(info,awa)
         push!(ide,ids[1])
         push!(idm,ids[2])
