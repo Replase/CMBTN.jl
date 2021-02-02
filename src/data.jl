@@ -1,15 +1,12 @@
 using DataFrames
 
 
-function inegi(dic::Dict)::Vector
-      a=get(dic,"Series",3)
-      vector=Vector{Dict{String,Any}}(undef,1)
-      for x in a
+function inegi(dic::Vector)::Vector
+      vector=Vector(undef,1)
+      for x in dic
             obs=get(x,"OBSERVATIONS",3)
             data=get(obs[1],"OBS_VALUE",3)
-            #ind=get(x,"INDICADOR",3)
-            dic2=Dict("OBS_VALUE"=>data)#dic2=Dict("INDICADOR"=>ind,"OBS_VALUE"=>data)
-            push!(vector,dic2)
+            push!(vector,data)
       end
       deleteat!(vector,1)
       return vector
@@ -21,11 +18,9 @@ function estadoid(url::String)::Int64
       return f
 end
 function municid(url::String)::Vector
-      a=url[182:189]
-      b=url[182:193]
+      a=url[187:189]
       g=parse(Int64,a)
-      g=g-7000000
-      f=b[end-3:end]
+      f=url[190:193]
       f=parse(Int64,f)
       vec=Vector()
       push!(vec,g)
@@ -45,8 +40,4 @@ function dataind(vect::Vector,g::Bool)::Vector
       end
       deleteat!(vec,1)
       return vec
-end
-
-function detainf(vect::Vector)::Vector
-
 end
