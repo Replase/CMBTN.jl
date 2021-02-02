@@ -4,6 +4,9 @@ include("help.jl")
 include("data.jl")
 include("info.jl")
 include("extracDatosNatyMor.jl")
+include("migración.jl")
+include("pobreza y extrema.jl")
+
 
 function Estado_data()
     V=apis
