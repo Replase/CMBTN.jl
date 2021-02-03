@@ -49,7 +49,7 @@ function df_nacimientos_x_anio()::DataFrame
         mujer = vector_x_anio_de_nacimientos(3)
         noespe = vector_x_anio_de_nacimientos(4)
         anio = vector_anio()
-        a = DataFrame(Año = anio, Total = total, Humbre = hombre, Mujer = mujer, NoEspecificado = noespe)
+        a = DataFrame(Año = anio, Total = total, Hombre = hombre, Mujer = mujer, NoEspecificado = noespe)
     catch
         include("apis.jl")
         df_nacimientos_x_anio()
