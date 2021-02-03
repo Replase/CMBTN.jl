@@ -5,7 +5,7 @@ ex = df_pobreza_extrema()
 =#
 
 function df_pobreza()::DataFrame
-    df = DataFrame(load("porcentaje de pobreza.csv"))
+    df = DataFrame(load("src\\porcentaje de pobreza.csv"))
     return df
 end
 
