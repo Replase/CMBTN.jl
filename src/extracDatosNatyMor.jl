@@ -1,7 +1,7 @@
 include("apis.jl")
 using HTTP, JSON
 #=Ejemplos de uso
-a = Cantidad_total_de("natalidad", "2019")
+a = Cantidad_total_de("natalidad", "1996")
 b = Cantidad_total_de("mortalidad", "2019")
 c = Cantidad_total_de("natalidad", "campeche", "2019", "total")
 d = Cantidad_total_de("natalidad", "campeche", "2001", "hombre")
@@ -63,7 +63,7 @@ function df_muertes_x_anio()::DataFrame
         mujer = vector_x_anio_de_muertes(3)
         noespe = vector_x_anio_de_muertes(4)
         anio = vector_anio()
-        a = DataFrame(Año = anio, Total = total, Humbre = hombre, Mujer = mujer, NoEspecificado = noespe)
+        a = DataFrame(Año = anio, Total = total, Hombre = hombre, Mujer = mujer, NoEspecificado = noespe)
     catch
         include("apis.jl")
         df_muertes_x_anio()
@@ -94,13 +94,15 @@ function Cantidad_total_de(categoria::String,anio::String)::Int
                     dato = convert_string_to_int(dato)
                     return dato
                 end
+            else
+                println("Error en el año establecido")
+                return 0
             end
         catch
             println("Error en el año establecido")
             return 0
         end
     catch
-        println("entra")
         include("apis.jl")
         Cantidad_total_de(categoria,anio)
     end
