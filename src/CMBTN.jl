@@ -40,9 +40,13 @@ function Municipio_Estado(path::String)                                        #
     ide=Vector()
     idm=Vector()
     info=Vector()
+    Dic=Vector()
     for (i,x) in enumerate(s)
         ids=municid(x)
         Dic=downA(x)
+        if sizeof(Dic)==0
+            break
+        end
         awa=inegi(Dic)
         push!(info,awa)
         push!(ide,ids[1])
@@ -63,6 +67,9 @@ function Municipio_Estado(path::String)                                        #
             sleep(120)
             println("Seguimos haciendo las consultas...\n")
         end
+    end
+    if sizeof(Dic)==0
+        return
     end
     nine=Vector(undef,9)
     for n in 1:9
