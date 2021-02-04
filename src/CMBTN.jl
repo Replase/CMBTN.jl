@@ -28,7 +28,7 @@ function Estado_data()
         nine[n]=deleteat!(data,1)
     end
     data=DataFrame(id=ids,Estado=Estados,Poblacion_total=nine[1],Media_edad=nine[2],Fecundidad=nine[3],Nacimientos=nine[4],Defunciones=nine[5],Densidad_pob=nine[6],Hombres=nine[8],Mujeres=nine[9],indigena=nine[7])
-    filecsv(data)
+    filecsv(data,"Estados")
 end
 function Municipio_Estado(path::String)                                        #Tiene que insertar el path del package CMBTN
     m="\\src\\municipio.txt"
@@ -46,18 +46,21 @@ function Municipio_Estado(path::String)                                        #
         push!(info,awa)
         push!(ide,ids[1])
         push!(idm,ids[2])
-        println("$i")
         if i==500
             sleep(120)
+            println("Seguimos haciendo las consultas...\n")
         end
         if i==1000
             sleep(120)
+            println("Seguimos haciendo las consultas...\n")
         end
         if i==1500
             sleep(120)
+            println("Seguimos haciendo las consultas...\n")
         end
         if i==2000
             sleep(120)
+            println("Seguimos haciendo las consultas...\n")
         end
     end
     nine=Vector(undef,9)
@@ -73,6 +76,57 @@ function Municipio_Estado(path::String)                                        #
         nine[n]=deleteat!(data,1)
     end
     data=DataFrame(id_Estado=ide,id_municipio=idm,Poblacion_total=nine[1],Media_edad=nine[2],Fecundidad=nine[3],Nacimientos=nine[4],Defunciones=nine[5],Densidad_pob=nine[6],Hombres=nine[8],Mujeres=nine[9],indigena=nine[7])
-    filecsv(data)
+    filecsv(data,"MUNICIPIOS")
+    println("Listo")
+end
+function covid(info::String) #mandas el path del archivo que genera municipi_estado o Estado_data
+    path="http://datosabiertos.salud.gob.mx/gobmx/salud/datos_abiertos/datos_abiertos_covid19.zip"
+    path=downl(path)
+    date=string(Dates.now())
+    date=date[1:10]
+    date=replace(date, ['-',':'] => "")
+    date=date[3:8]
+    day=parse(Int64,date[5:6])
+    mon=Dates.month(Dates.now())
+    yea=Dates.year(Dates.now())
+    if day==1
+          if mon==1
+                yea=yea-1
+                mon=12
+                ld=Dates.lastdayofmonth(Date(Dates.Month(mon),Dates.Year(yea)))
+                day=Dates.day(ld)
+          else
+                mon=mon-1
+                ld=Dates.lastdayofmonth(Date(Dates.Month(mon),Dates.Year(yea)))
+                day=Dates.day(ld)
+          end
+    else
+          day=day-1
+    end
+    if day<10
+          day=string(0,day)
+    else
+          day=string(day)
+    end
+    if mon<10
+          mon=string(0,mon)
+    else
+          mon=string(mon)
+    end
+    yea=string(yea)
+    covid="COVID19MEXICO.csv"
+    i="\\"
+    date=i*yea[3:4]*mon*day*covid
+    path=path*date
+    data=DFCSV(path,false)
+    data2=DFCSV(info,false)
+    bol=info[end-25:end-19]
+    if bol == "Estados"
+        frame=leftjoin(data,data2,on=:ENTIDAD_RES=>:id)
+        filecsv(frame,"COVID19ESTADOS")
+    else
+        frame=leftjoin(data,data2,on=[:ENTIDAD_RES=>:id_Estado,:MUNICIPIO_RES =>:id_municipio])
+        filecsv(frame,"COVID19MUNICIPIOS")
+    end
 end
 end # module

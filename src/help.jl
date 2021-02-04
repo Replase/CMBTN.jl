@@ -26,6 +26,14 @@ function filecsv(file::DataFrame)
     name=n*date*fin
     a=save(name,file)                  #crea un arhchivo csv en el directorio base
 end
+function filecsv(file::DataFrame,nam::String)
+    date=string(Dates.now())
+    date=date[1:19]
+    date=replace(date, ['-',':'] => "")
+    fin=".csv"
+    name=nam*date*fin
+    a=save(name,file)                  #crea un arhchivo csv en el directorio base
+end
 function downl(url::String,dir::String)::String
         a=HTTP.download(url,dir)                            #Descarga un archivo y si es un zip lo descomprime
         tipo=a[end-2:end]
