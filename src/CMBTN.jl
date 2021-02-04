@@ -52,15 +52,19 @@ function Municipio_Estado(path::String)                                        #
         push!(ide,ids[1])
         push!(idm,ids[2])
         if i==500
+            sleep(120)
             println("Seguimos haciendo las consultas...\n")
         end
         if i==1000
+            sleep(120)
             println("Seguimos haciendo las consultas...\n")
         end
         if i==1500
+            sleep(120)
             println("Seguimos haciendo las consultas...\n")
         end
         if i==2000
+            sleep(120)
             println("Seguimos haciendo las consultas...\n")
         end
     end
