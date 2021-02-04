@@ -29,6 +29,7 @@ function Estado_data()
     end
     data=DataFrame(id=ids,Estado=Estados,Poblacion_total=nine[1],Media_edad=nine[2],Fecundidad=nine[3],Nacimientos=nine[4],Defunciones=nine[5],Densidad_pob=nine[6],Hombres=nine[8],Mujeres=nine[9],indigena=nine[7])
     filecsv(data,"Estados")
+    println("Listo")
 end
 function Municipio_Estado(path::String)                                        #Tiene que insertar el path del package CMBTN
     m="\\src\\municipio.txt"
@@ -79,7 +80,7 @@ function Municipio_Estado(path::String)                                        #
     filecsv(data,"MUNICIPIOS")
     println("Listo")
 end
-function covid(info::String) #mandas el path del archivo que genera municipi_estado o Estado_data
+function union_covid(info::String) #mandas el path del archivo que genera municipi_estado o Estado_data
     path="http://datosabiertos.salud.gob.mx/gobmx/salud/datos_abiertos/datos_abiertos_covid19.zip"
     path=downl(path)
     date=string(Dates.now())
