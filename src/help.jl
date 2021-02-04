@@ -59,6 +59,7 @@ function downA(API::String)::Vector         # retorna una vector con la informac
         Dic=Dict()
         Dic=JSON.parse(f)
         Dic=get(Dic,"Series",3)
+        sleep(1)
         return Dic
     catch err
         println("Error 3312 -> El servidor de datos de la INEGI a bloqueado la IP de su computadora, favor de esperar 5 min y volverlo a intenar")
