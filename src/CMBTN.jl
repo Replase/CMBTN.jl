@@ -3,11 +3,12 @@ module CMBTN
 include("help.jl")
 include("data.jl")
 include("info.jl")
-#=include("extracDatosNatyMor.jl")
+include("extracDatosNatyMor.jl")
 include("migración.jl")
 include("pobreza y extrema.jl")
 include("idh.jl")
-=#
+include("apis.jl")
+
 function Estado_data()
     V=apis
     ids=Vector()
