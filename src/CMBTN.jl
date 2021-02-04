@@ -7,6 +7,7 @@ include("extracDatosNatyMor.jl")
 include("migración.jl")
 include("pobreza y extrema.jl")
 include("idh.jl")
+include("apis.jl")
 
 function Estado_data()
     V=apis
