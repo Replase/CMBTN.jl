@@ -1,4 +1,4 @@
-include("apis.jl")
+#include("apis.jl")
 using HTTP, JSON
 #=Ejemplos de uso
 a = Cantidad_total_de("natalidad", "1996")
